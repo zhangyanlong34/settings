@@ -1,0 +1,23 @@
+<ion-view title="短信通知电话" id="page10" cache-view="false">
+    <ion-nav-buttons side="right">
+        <button class="button" ui-sref="menu.page15({gwid:GW_ID})" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;">
+                增加
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header" ng-init="getSecurityPhone('0')">
+            <!--<ion-list id="page10-list15" ng-repeat="item in items track by $index">
+                <div on-hold="showDelete('{{item.phone}}',$index)" on-tap="goUpdate(item)" >
+                    <ion-toggle toggle-class="toggle-positive"  id="page10-toggle2"  ng-checked="item.isSend" readonly="readonly">{{item.phone}}（{{item.username}}）</ion-toggle>
+                </div>
+            </ion-list>-->
+        <ion-list ng-repeat="item in items track by $index">
+            <ion-item on-tap="goUpdate(item)" on-hold="showDelete('{{item.phone}}',$index)" class="padding">
+                <ion-toggle toggle-class="toggle-positive" ng-model="item.isSend" ng-checked="item.isSend" id="page15-toggle5"  readonly="readonly">{{item.phone}}（{{item.username}}）</ion-toggle>
+            </ion-item>
+        </ion-list>
+            <!--<ion-toggle toggle-class="toggle-positive" id="page10-toggle2">18646292576（张三）</ion-toggle>-->
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;display: none" id="button">
+            <button id="page10-button7" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="delete();">删除</button>
+        </div>
+    </ion-content>
+</ion-view>

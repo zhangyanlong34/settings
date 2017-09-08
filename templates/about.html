@@ -1,0 +1,40 @@
+<ion-view title="关于网关" id="about">
+    <ion-content padding="true" class="has-header">
+        <ion-list id="about-list11">
+            <ion-item class="item-icon-left" id="page8-list-item22" >
+                <i class="icon"><img src="lib/ionic/img/about/DeviceID.png" style="height: 25px;height: 25px;"></i>网关ID：
+                <span class="item-note" name="gatewayID" ng-bind="sysConfig.gwid"   ></span>
+            </ion-item>
+            <ion-item class="item-icon-left" id="page8-list-item230" >
+                <i class="icon"><img src="lib/ionic/img/about/DeviceID.png" style="height: 25px;height: 25px;"></i>IP地址：
+                <span class="item-note" name="IP" ng-bind="IP"   ></span>
+            </ion-item>
+            <ion-item class="item item-icon-left" id="page8-list-item23" style="padding: 10px;">
+                <i class="icon"><img src="lib/ionic/img/about/DeviceName.png" style="height: 25px;height: 25px;"><span style="font-size: 16px;margin-left: 18px;">网关名称：</span></i>
+                <input type="text" class="item-note" id="useralias" style="text-align: right;margin-top: 0px;padding-top: 0px;" ng-focus="showSave('useralias')"  ng-model="sysConfig.useralias"  />
+            </ion-item>
+            <ion-item class="item-icon-left" id="page8-list-item27">
+                <i class="icon"><img src="lib/ionic/img/about/startTime.png" style="height: 25px;height: 25px;"></i>启动时间：
+                <span class="item-note" ng-bind="sysConfig.last_start_time" >2016-09-20 10:30:08</span>
+            </ion-item>
+            <ion-item class="item-icon-left" id="page8-list-item28">
+                <i class="icon"><img src="lib/ionic/img/about/sysTime.png" style="height: 25px;height: 25px;"></i>系统时间：
+                <!--<input type="datetime-local"  class="item-note" style="height: 20px;text-align: right"  ng-model="sysConfig.systemTime"   placeholder="YYYY-MM-dd HH:mm:ss" />-->
+                <div class="item item-note" ion-datetime-picker  seconds   ng-model="sysConfig.systemTime" style="height:1rem; vertical-align:middle; border: 0 ;padding-top: 0px;padding-right: 0px;">
+                    <strong>{{sysConfig.systemTime| date: "yyyy-MM-dd H:mm:ss"}}</strong>
+
+                </div>
+            </ion-item>
+            <ion-item class="item-icon-left" id="page8-list-item29">
+                <i class="icon"><img src="lib/ionic/img/about/sysVersion.png" style="height: 25px;height: 25px;"></i>系统版本：
+                <span class="item-note" ng-bind="sysConfig.version"  >4.5.2710</span>
+            </ion-item>
+        </ion-list>
+        <div class="spacer" style="height: 20%"></div>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+        <button id="page8-button3" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" ng-click="saveSysConfig(sysConfig)">保存网关信息</button>
+        <button id="page8-button5" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" ng-click="synCofigToServer()">网关信息同步服务器</button>
+        </div>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,55 @@
+<ion-view title="设置电视机" id="page3">
+  <ion-content padding="true" class="has-header">
+    <ion-radio ng-repeat="item in TVList"
+               ng-value="item.value"
+               ng-model="select"
+               ng-click="TVSelect(item)"
+               name="server-side">
+      {{ item.text }}
+    </ion-radio>
+  </ion-content>
+  <!--<ion-content padding="true" class="has-header">
+    <div style="text-align: center;margin-top: 10%;">
+    <button id="page2-button4" style="border-radius:180px 180px 180px 180px;" class="button button-stable  icon ion-android-volume-down"></button>
+    <button id="page2-button5" style="border-radius:180px 180px 180px 180px;margin-left: 45%" class="button button-assertive  icon ion-power"></button> </div>
+    <div style="text-align: center;margin-top: 10%">
+      <button id="page2-button6" style="border-radius:5px 5px;" class="button button-stable  icon ion-android-add"></button>
+      <button id="page2-button12" class="button button-positive  icon ion-android-arrow-up" style="margin-left: 15%;"></button>
+      <button id="page2-button8" class="button button-stable  icon ion-android-add" style="margin-left: 15%"></button>
+    </div>
+    <div style="text-align: center;margin-top: 5px;">
+      <button id="pindao" class="button button-light" disabled="disabled">频道</button>
+      <button id="page2-button13" class="button button-positive  icon ion-android-arrow-back"></button>
+      <button id="page2-button10" class="button button-positive">OK</button>
+      <button id="page2-button15" class="button button-positive  icon ion-android-arrow-forward"></button>
+      <button id="voice" class="button button-light" disabled="disabled">音量</button>
+    </div>
+    <div style="text-align: center;margin-top: 5px;">
+      <button id="page2-button7" class="button button-stable  icon ion-ios-minus-empty"></button>
+      <button id="page2-button14" class="button button-positive  icon ion-android-arrow-down" style="margin-left: 15%;"></button>
+      <button id="page2-button9" class="button button-stable  icon ion-ios-minus-empty" style="margin-left: 15%;"></button>
+    </div>
+    <div id="page2-button-bar1" style="text-align: center;margin-top: 10%;">
+      <button id="page2-button19" style="width: 20%" class="button button-positive">1</button>
+      <button id="page2-button20" style="margin-left: 30px;width: 20%" class="button button-positive">2</button>
+      <button id="page2-button21" style="margin-left: 30px;width: 20%" class="button button-positive">3</button>
+    </div>
+    <div id="page2-button-bar2" style="text-align: center;margin-top: 10px;">
+      <button id="page2-button22" class="button button-positive" style="width: 20%" >4</button>
+      <button id="page2-button23" class="button button-positive" style="margin-left: 30px;width: 20%">5</button>
+      <button id="page2-button24" class="button button-positive" style="margin-left: 30px;width: 20%">6</button>
+    </div>
+    <div id="page2-button-bar3" style="text-align: center;margin-top: 10px;">
+      <button id="page2-button25" class="button button-positive" style="width: 20%">7</button>
+      <button id="page2-button26" class="button button-positive" style="margin-left: 30px;width: 20%">8</button>
+      <button id="page2-button27" class="button button-positive" style="margin-left: 30px;width: 20%">9</button>
+    </div>
+    <div id="page2-button-bar4" style="text-align: center;margin-top: 10px;">
+      <button id="page2-button28" class="button" style="width: 20%">菜单</button>
+      <button id="page2-button29" class="button" style="margin-left: 30px;width: 20%">0</button>
+      <button id="page2-button30" class="button icon ion-arrow-return-left" style="margin-left: 30px;width: 20%"></button>
+    </div>
+  </ion-content>-->
+</ion-view>
+
+

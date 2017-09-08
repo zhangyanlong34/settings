@@ -1,0 +1,41 @@
+<ion-view title="设备" id="page14" cache-view="false" >
+    <ion-nav-buttons side="right">
+        <button class="button" ui-sref="menu.page16" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;">
+          	  添加
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header" ng-init="initDevice();" scroll="false">
+		<ion-scroll style="height: 100%;">
+			 <ion-list id="page14-list18">
+				 <div ng-repeat="spatialsName in spatialsNameList">
+					 <ion-item class="item-icon-left" ng-click="launch(spatialsName)" ng-if="spatialsName.check"><i class="icon"><img src="{{spatialsName.icon}}" style="height: 30px;height: 30px;" onerror="this.src='lib/ionic/img/space/defult.png'"></i>{{spatialsName._label}}
+					 </ion-item>
+					 <ion-item class="item-icon-left item-icon-right" ng-if="spatialsName._name==equlists._spatialname && spatialsName._name == show" ng-repeat="equlists in equ" id="page14-list-item44" on-hold="deleteAccount(equlists)" on-tap="goToDevice(equlists._label,equlists,spatialsName,equlists._customicon)">
+						<i class="icon"><img src="lib/ionic/img/device/{{equlists._customicon}}.png" style="height: 25px;height: 25px;" onerror="this.src='lib/ionic/img/device/dianqi.png'"></i>
+							 {{equlists._label}}
+						<i class="icon ion-android-arrow-dropright"></i>
+					 </ion-item>
+				 </div>
+			 </ion-list>
+		</ion-scroll>
+    </ion-content>
+</ion-view>
+<script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">选择你的空间</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+         <ion-list>
+			<ion-radio ng-repeat="spatialsName in spatialsNameList"
+		       ng-value="spatialsName._label"
+		       ng-click="serverSideChange(spatialsName)"
+		       name="server-side">
+	          {{ spatialsName._label }}
+	       </ion-radio>
+		  </ion-list>
+        </ion-content>
+      </ion-modal-view>
+</script>
+

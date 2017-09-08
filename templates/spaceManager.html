@@ -1,0 +1,22 @@
+<ion-view title="空间管理" cache-view="false" id="page6">
+    <ion-nav-buttons side="right">
+        <button class="button" ui-sref="menu.addSpace" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;">
+            添加
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header" ng-init="refresh();">
+        <ion-list id="page6-list10" ng-repeat="item in items track by $index">
+            <!--<ion-item class="item-icon-left item-icon-right" id="page6-list-item17" name="{{item._name}}"  on-tap="goUrl('menu.page12',{{item}})" on-hold="deleteSpace('page6-button2',{{item._name}},$index)">-->
+            <ion-item class="item-icon-left item-icon-right" id="page6-list-item17" name="{{item._name}}"  on-tap="goUrl('menu.page12',{{item}})" on-hold="delete(item._name,$index)">
+                <i class="icon"><img src="lib/ionic/img/space/{{item._icon}}.png" style="height: 25px;height: 25px;" onerror="this.src='lib/ionic/img/space/home.png'"></i>
+                {{item._label}}
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+        </ion-list>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;">
+        <button id="page6-button2" style="border-radius:7px 7px 7px 7px;display: none;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="delete('page6-button2');">删除空间</button>
+            </div>
+        <input type="hidden" id="name"/>
+        <input type="hidden" id="index"/>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/utils.js"></script>
+    <script type="text/javascript">
+
+
+
+            var s = [];
+            var hexDigits = "0123456789abcdef";
+            for (var i = 0; i < 36; i++) {
+                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+            }
+            s[14] = "4";
+            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
+
+            s[8] = s[13] = s[18] = s[23] = "-";
+
+            var uuid = s.join("");
+            console.log()
+
+        var str = '<equipment fname="21" enable="1" weeks="" date="" end_date="" start_time="00:00" end_time="23:59"><condition name="da83a416036446dab7f7d3c6a9ea4ea5" property="1002" operator="" value="1"/> <condition name="70509b314cb34248abf06039a72cb631" property="1005" operator="" value="2"/> <condition name="114f6811e60f4fa3a98cfc4288aa0781" property="104A" operator="" value="3"/> <condition name="802246294f4345afade8166f80062384" property="1050" operator="" value="4"/> </equipment>';
+        var x2js = new X2JS();
+        var jsonObj = x2js.xml_str2json( str );//xml转json  json.stringify  json转字符串
+        //var devices = jsonObj.equipments;
+        console.log(jsonObj);
+        /*var device = {};
+        if(devices!=null){
+            if(devices.length) {
+                device = devices[0];
+            }else{
+                device = devices;
+            }
+            console.log(device);
+        }else{
+
+        }*/
+
+            alert(parseInt("4369").toString(16));
+
+            var xmlAsStr = x2js.json2xml_str( jsonObj ); //json转xml
+        //alert(xmlAsStr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

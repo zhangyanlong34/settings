@@ -1,0 +1,9 @@
+<ion-view title="红外转发器" id="page23">
+    <ion-content padding="true" class="has-header" ng-init="initDevice();">
+        <ion-list id="page23-list28">
+            <ion-item class="item-icon-left" ng-repeat="item in equ"  ng-click="goToDevice(item);">
+                {{item._label}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

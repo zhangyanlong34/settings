@@ -1,0 +1,45 @@
+<ion-view title="{{tittle}}" cache-view="false" id="page11">
+    <ion-nav-buttons side="right">
+        <button class="button" on-tap="deleteDisplay('button');" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;">
+            添加
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content padding="true" class="has-header" ng-init="getSceneDevice()">
+        <div style="width:200px;height:50px;line-height:50px;text-align:left;" ng-show="itemsInput.length!=0">
+            <p>
+                智能联动条件
+            </p>
+        </div>
+        <ion-list id="page11-list15" ng-repeat="item2 in itemsInput track by $index">
+            <ion-item class="item-icon-left item-icon-right" id="page11-list-item32" on-tap="goUpdate('menu.UpdatesceneInputDevice',item2)" on-hold="goDeleteInput({{item2}},$index);">
+                <i class="icon ion-outlet"></i>{{item2.label}}
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+        </ion-list>
+        <div style="width:200px;height:50px;line-height:50px;text-align:left;" ng-show="items.length!=0">
+            <p>
+                情景执行设备
+            </p>
+        </div>
+        <form id="page11-form3" class="list" >
+            <ion-list id="page11-list16" ng-repeat="item in items track by $index">
+                <div on-hold="goDelete({{item._name}},$index);">
+                <ion-toggle ng-if="item._haid !='01040201' && item._haid != '01040310' && item._haid != '01040502'" id="page11-toggle3" ng-click="saveStatus(item._name,name,item.check)" ng-model="item.check">{{item._label}}</ion-toggle>
+                </div>
+                <ion-item ng-if="item._haid =='01040201' || item._haid == '01040310' || item._haid == '01040502'" class="item-icon-left item-icon-right" id="page11-list-item33" on-hold="goDelete({{item}},$index);" ng-click="goUpdateDevice({{item}},'menu.updateAirCondition');">
+                    <i class="icon ion-clipboard"></i>{{item._label}}
+                    <i class="icon ion-android-arrow-dropright"></i>
+                </ion-item>
+
+            </ion-list>
+        </form>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;display: none" id="button">
+            <button id="page13-button2"  style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block">智能联动条件</button>
+            <button id="page13-button3"  style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ui-sref="menu.sceneDeviceList({ name:name })">情景执行设置</button>
+        </div>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;display: none" id="buttondelete">
+            <button id="page13-button4"  style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="deleteSceneDevice();">删除</button>
+        </div>
+    </ion-content>
+</ion-view>

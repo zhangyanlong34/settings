@@ -1,0 +1,26 @@
+<ion-view title="消息通知" id="page7" cache-view="false">
+    <ion-content padding="true" class="has-header" ng-init="getMessage()">
+        <form id="page7-form1" class="list">
+            <!--<ion-toggle toggle-class="toggle-positive" id="page7-toggle1" ng-checked='push_local' ng-model="push_local" ng-change="showSave(this)">是否推送安防消息</ion-toggle>-->
+            <ion-item class="item-icon-right" id="page7-list-item19" ui-sref="menu.page10">安防报警短信通知
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <ion-item class="" id="page7-list-item20">安防报警间隔（秒）
+                <input type="text" class="item-note" id="alarm_interval" style="height: 20px;text-align: right" ng-focus="showSave('alarm_interval')" ng-model="alarm_interval"/>
+                <!--<span class="item-note">5</span>-->
+            </ion-item>
+            <ion-item class="" id="page7-list-item21">门锁报警间隔（秒）
+                <input type="text" class="item-note" id="lock_alarm_interval" style="height: 20px;text-align: right" ng-focus="showSave('lock_alarm_interval')" ng-model="lock_alarm_interval"/>
+            </ion-item>
+            <ion-item class="" id="page7-list-item23">数据上传时间间隔（分）
+                <input type="text" class="item-note" id="data_upload_interval" style="height: 20px;text-align: right" ng-model="data_upload_interval"/>
+            </ion-item>
+            <ion-toggle toggle-class="toggle-positive" id="page7-toggle2" ng-checked='debug' ng-model="debug" ng-change="showSave(this)">启动调试日志</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive" id="page7-toggle3" ng-checked='recovery' ng-model="recovery" ng-change="showSave(this)">配置恢复</ion-toggle>
+        </form>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;" id="button">
+            <button id="page10-button7" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="save(push_local,debug,recovery);">保存</button>
+        </div>
+    </ion-content>
+
+</ion-view>

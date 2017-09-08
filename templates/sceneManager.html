@@ -1,0 +1,21 @@
+<ion-view title="情景" cache-view="false" id="page13" ng-init="getScene()">
+    <ion-nav-buttons side="right">
+        <button class="button" ui-sref="menu.addScene" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;">
+            添加
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <ion-list id="page13-list17" ng-repeat="item in items track by $index">
+           <!-- <ion-item class="item-icon-left item-icon-right" id="page13-list-item37" on-tap="goUrl('menu.page11',{{item}});" on-hold="updateOrdelete({{item}},$index);">-->
+            <ion-item class="item-icon-left item-icon-right" id="page13-list-item37" on-tap="goUrl('menu.page11',{{item}});" on-hold="updateAnddelete(item,$index);">
+                <i class="icon"><img src="lib/ionic/img/scene/{{item._icon}}.png" style="height: 30px;" onerror="this.src='lib/ionic/img/scene/scenes_default.png'"></i>
+                {{item._label}}
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+        </ion-list>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;display: none" id="button">
+            <button id="page13-button2"  style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" on-tap="goUpdate('menu.updateScene');">修改</button>
+            <button id="page13-button3"  style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="delete();">删除</button>
+        </div>
+    </ion-content>
+</ion-view>

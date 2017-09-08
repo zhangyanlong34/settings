@@ -1,0 +1,100 @@
+<ion-view title="设置" id="page25">
+    <ion-content padding="true" class="has-header" ng-init="getInputDetail(name)">
+        <form id="page25-form8" class="list">
+            <ion-toggle toggle-class="toggle-positive" ng-checked="checked" id="page25-toggle6" ng-model="checked">是否开启联动条件</ion-toggle>
+        </form>
+        <h4 id="page25-heading3" style="color:#000000;">开始时间</h4>
+        <div class="item" ion-datetime-picker time ng-model="startTime">
+            <strong id="startTime">{{startTime| date: "H:mm"}}</strong>
+        </div>
+        <h4 id="page25-heading4" style="color:#000000;">结束时间</h4>
+        <div class="item" ion-datetime-picker time ng-model="endTime" >
+            <strong id="endTime">{{endTime| date: "H:mm"}}</strong>
+        </div>
+        <ion-item class="item-icon-right" id="page26-list-item26" ng-click="modal.show()">重复：
+            <div class="item-note" style="width: 3rem;margin-right: -10px;">
+                <span class="item-note"  ng-click="modal.show()" ng-bind ="days"></span>
+            </div>
+            <i class="icon ion-android-arrow-dropright"></i>
+        </ion-item>
+        <!--<ion-list ng-show="false" >
+            <ion-toggle toggle-class="toggle-positive" ng-model="$parent.inputText" id="page25-toggle8" ng-click="changeStatus()">用户激发情景</ion-toggle>
+            <ion-item id="page26-list-item254">输入值：
+                <input type="text" id="doorNum" ng-model="doorNum" ng-readonly="!$parent.inputText" class="item-note" style="padding: 0;height: auto;text-align: right;"/>
+            </ion-item>
+        </ion-list>-->
+
+        <ion-list ng-if="PM">
+
+            <ion-item class="item-icon-right" id="page6-list-item17"  ng-click="modal2.openModal(0);">
+                温度：
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" id="page6-list-item18"  ng-click="modal2.openModal(1);">
+                湿度：
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" id="page6-list-item19"  ng-click="modal2.openModal(2);">
+                PM值：
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" id="page6-list-item20"  ng-click="modal2.openModal(3);">
+                光照：
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+        </ion-list>
+        <ion-toggle toggle-class="toggle-positive" ng-checked="true" id="page25-toggle7">当设备发生报警时激发情景</ion-toggle>
+        <button id="page25-button41" class="button button-positive  button-block" on-tap="saveInputDevice(checked,select)">确定</button>
+    </ion-content>
+</ion-view>
+
+<!--选择空间弹层-->
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+            <h1 class="title">选择重复日期</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+                <ion-toggle ng-repeat="item in settingsList"
+                            ng-model="item.checked"
+                            ng-checked="item.checked"
+                            ng-click="serverSideChange(item)">
+                    {{ item.text }}
+                </ion-toggle>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="templates/modal2.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modal2.hide()">取消</button>
+            <h1 class="title">选择输入条件</h1>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <ion-toggle toggle-class="toggle-positive" ng-model="pmChecked" id="pmChecked" >是否开启：</ion-toggle>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    条件
+                </div>
+                <select ng-model="pmSelect" id="pmSelect">
+                    <option value=">"> > </option>
+                    <option value="<"> < </option>
+                    <option value=">="> >= </option>
+                    <option value="<="> <= </option>
+                    <option selected="selected" value="="> = </option>
+                    <option value="!="> != </option>
+                </select>
+            </div>
+            <ion-item id="page26-list-item25">输入值：
+                <input type="text" id="pmNum" ng-model="pmNum" class="item-note" style="padding: 0;height: auto;text-align: right;"/>
+            </ion-item>
+
+            <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+                <button id="page26-button6" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" ng-click="modal2.confirm(pmChecked,pmSelect,pmNum);">保存</button>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>

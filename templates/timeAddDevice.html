@@ -1,0 +1,181 @@
+<ion-view title="{{device._label}}" id="page2" cache-view="false">
+  <ion-content padding="true" class="has-header" ng-init="timeAddDeviceInit();">
+    <h4 id="page2-heading1" style="color:#000000;">定时信息：</h4>
+    <ion-list id="page2-form2">
+      <ion-toggle toggle-class="toggle-positive" id="page2-toggle2"  name="checked"  ng-model="checked">启用设备预约</ion-toggle>
+      <ion-item class="item-icon-right" id="page2-list-item2"  ng-click="modal.show()">重复
+        <div class="item-note" style="width: 3rem;margin-right: -10px;">
+          <span class="item-note" ng-model="repeatDays">{{repeatDays}}</span>
+        </div>
+        <i class="icon ion-android-arrow-dropright"></i>
+      </ion-item>
+      <!--<ion-item class="item-icon-right" id="page2-list-item3">-->
+      <div ng-repeat="time in times track by $index">
+        时间{{$index+1}}
+        <div class="item item-note item-icon-right" on-hold="deleteTime($index);" ion-datetime-picker time    ng-model="time" style="float: none">
+         时间信息<strong id="Time{{$index}}" style="float: right">{{time| date: "H:mm"}}</strong>
+          <i class="icon ion-android-arrow-dropright"></i>
+        </div>
+        <ion-toggle toggle-class="toggle-positive" id="checked{{$index}}" ng-if="deviceType =='0'"  ng-checked='statuschecked[$index]'  name="statuschecked{{$index}}"  ng-model='statuschecked[$index]'  >电器状态</ion-toggle>
+        <ion-item class="item-icon-right" id="detail{{$index}}" ng-if="deviceType!='0'" ng-click="showModel($index);">详情
+          <i class="icon ion-android-arrow-dropright"></i>
+        </ion-item>
+      </div>
+     <!-- </ion-item>-->
+
+      <button id="page25-button40" class="button button-positive  button-block" style="border-radius:7px 7px 7px 7px;width: 90%;margin-left: auto;margin-right: auto;margin-top: 10%" ng-click="addOneTime2()">添加时间</button>
+      <button id="page25-button41" class="button button-positive  button-block" style="border-radius:7px 7px 7px 7px;width: 90%;margin-left: auto;margin-right: auto;margin-top: 3%" ng-click="saveTimeDevice()">确定</button>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+
+<!--选择空间弹层-->
+<script id="templates/modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+      <h1 class="title">选择重复日期</h1>
+      <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <ion-toggle ng-repeat="item in settingsList"
+                  ng-model="item.checked" ng-checked="item.checked" ng-click="changeTime();">
+        {{ item.text }}
+      </ion-toggle>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal1.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal1.hide()">取消</button>
+      <h1 class="title">设置窗帘</h1>
+      <button class="button button-clear button-primary" ng-click="modal1.hide()">确定</button>
+    </ion-header-bar>
+        <ion-content padding="true" class="has-header" ng-init="initWindow();">
+        <div style="width: 80%;margin-left: auto;margin-right: auto;margin-top: 10%;height: 70%;">
+        <ion-toggle toggle-class="toggle-positive" style="border-color: #ffffff;margin-top: 10%"   id="page-toggle1" ng-model="check">开关</ion-toggle>
+        <div class="range range-positive" id="page-range1" style="border-color: #ffffff;margin-top: 10%;width: 98%;">1
+        <input type="range" value="1" min="1" max="10" step="1" ng-model="range" id="range" >10 &nbsp;&nbsp;
+    <div style="word-break: break-all;word-wrap: break-word;font-size: 16px;">当前：<span ng-bind="range">{{range}}</span></div>
+    </div>
+
+    <button id="page13-button2"  style="border-radius:7px 7px 7px 7px;width: 90%;margin-left: auto;margin-right: auto;margin-top: 10%"  class="button button-positive  button-block" on-tap="windowSelect(range,check);">保存</button>
+        </div>
+        </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal2.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal2.hide()">取消</button>
+      <h1 class="title">设置电视机</h1>
+      <button class="button button-clear button-primary" ng-click="modal2.hide()">确定</button>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header">
+        <ion-radio ng-repeat="item in TVList"
+                   ng-value="item.value"
+                   ng-model="select"
+                   ng-click="TVSelect(item)"
+                   name="server-side">
+            {{ item.text }}
+        </ion-radio>
+      <!--<div style="text-align: center;margin-top: 10%;">
+        <button id="page2-button4" style="border-radius:180px 180px 180px 180px;" class="button button-stable  icon ion-android-volume-down"></button>
+        <button id="page2-button5" style="border-radius:180px 180px 180px 180px;margin-left: 45%" class="button button-assertive  icon ion-power"></button> </div>
+      <div style="text-align: center;margin-top: 10%">
+        <button id="page2-button6" style="border-radius:5px 5px;" class="button button-stable  icon ion-android-add"></button>
+        <button id="page2-button12" class="button button-positive  icon ion-android-arrow-up" style="margin-left: 15%;"></button>
+        <button id="page2-button8" class="button button-stable  icon ion-android-add" style="margin-left: 15%"></button>
+      </div>
+      <div style="text-align: center;margin-top: 5px;">
+        <button id="pindao" class="button button-light" disabled="disabled">频道</button>
+        <button id="page2-button13" class="button button-positive  icon ion-android-arrow-back"></button>
+        <button id="page2-button10" class="button button-positive">OK</button>
+        <button id="page2-button15" class="button button-positive  icon ion-android-arrow-forward"></button>
+        <button id="voice" class="button button-light" disabled="disabled">音量</button>
+      </div>
+      <div style="text-align: center;margin-top: 5px;">
+        <button id="page2-button7" class="button button-stable  icon ion-ios-minus-empty"></button>
+        <button id="page2-button14" class="button button-positive  icon ion-android-arrow-down" style="margin-left: 15%;"></button>
+        <button id="page2-button9" class="button button-stable  icon ion-ios-minus-empty" style="margin-left: 15%;"></button>
+      </div>
+      <div id="page2-button-bar1" style="text-align: center;margin-top: 10%;">
+        <button id="page2-button19" style="width: 20%" class="button button-positive">1</button>
+        <button id="page2-button20" style="margin-left: 30px;width: 20%" class="button button-positive">2</button>
+        <button id="page2-button21" style="margin-left: 30px;width: 20%" class="button button-positive">3</button>
+      </div>
+      <div id="page2-button-bar2" style="text-align: center;margin-top: 10px;">
+        <button id="page2-button22" class="button button-positive" style="width: 20%" >4</button>
+        <button id="page2-button23" class="button button-positive" style="margin-left: 30px;width: 20%">5</button>
+        <button id="page2-button24" class="button button-positive" style="margin-left: 30px;width: 20%">6</button>
+      </div>
+      <div id="page2-button-bar3" style="text-align: center;margin-top: 10px;">
+        <button id="page2-button25" class="button button-positive" style="width: 20%">7</button>
+        <button id="page2-button26" class="button button-positive" style="margin-left: 30px;width: 20%">8</button>
+        <button id="page2-button27" class="button button-positive" style="margin-left: 30px;width: 20%">9</button>
+      </div>
+      <div id="page2-button-bar4" style="text-align: center;margin-top: 10px;">
+        <button id="page2-button28" class="button" style="width: 20%"></button>
+        <button id="page2-button29" class="button" style="margin-left: 30px;width: 20%">0</button>
+        <button id="page2-button30" class="button icon ion-arrow-return-left" style="margin-left: 30px;width: 20%"></button>
+      </div>-->
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal3.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal3.hide()">取消</button>
+      <h1 class="title">设置空调</h1>
+      <button class="button button-clear button-primary" ng-click="modal3.hide()">确定</button>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header" ng-init="getAirCondition1();">
+      <ion-radio ng-model="power" name="power" ng-value="1" ng-click="airSelect(this,'power');">
+        开机
+      </ion-radio>
+      <ion-radio ng-model="power" name="power" ng-value="0" ng-click="airSelect(this,'power');">
+        关机
+      </ion-radio>
+      <ion-radio ng-model="temper"  name="temper" ng-value="0" ng-click="airSelect(this,'temper');">
+        制冷
+      </ion-radio>
+      <ion-radio ng-model="temper"  name="temper" ng-value="1" ng-click="airSelect(this,'temper');">
+        制热
+      </ion-radio>
+      <div id="page24-container5" style="height: 50%;margin-top: 20px;">
+        <div style="text-align:center;">
+          <td><button id="page24-button08" class="button button-positive" name="button" style="width: 15%">18</button></td>
+          <td><button id="page24-button33" class="button button-positive" name="button" style="width: 15%">22</button></td>
+          <td><button id="page24-button35" class="button button-positive" name="button" style="width: 15%">24</button></td>
+          <td><button id="page24-button36" class="button button-positive" name="button" style="width: 15%">26</button></td>
+          <td><button id="page24-button40" class="button button-positive" name="button" style="width: 15%">30</button></td>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal4.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal4.hide()">取消</button>
+      <h1 class="title">设置卷帘</h1>
+      <button class="button button-clear button-primary" ng-click="modal4.hide()">确定</button>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header" ng-init="initRolling();">
+      <ion-radio ng-repeat="item in serverSideList track by $index"
+                 ng-value="item.value"
+                 ng-model="select"
+                 ng-click="rollSelect(item)"
+                 name="server-side">
+        {{ item.text }}
+      </ion-radio>
+    </ion-content>
+  </ion-modal-view>
+</script>
+

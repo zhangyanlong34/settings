@@ -1,0 +1,13 @@
+<ion-view title="窗帘" cache-view="false" id="windowScreen">
+    <ion-content padding="true" class="has-header" ng-init="initWindowScreen();">
+        <div style="width: 80%;margin-left: auto;margin-right: auto;margin-top: 10%;height: 70%;">
+            <ion-toggle toggle-class="toggle-positive" style="border-color: #ffffff;margin-top: 10%"   id="page-toggle1" ng-model="check">开关</ion-toggle>
+            <div class="range range-positive" id="page-range1" style="border-color: #ffffff;margin-top: 10%;width: 98%;">1
+                <input type="range" value="1" min="1" max="10" step="1" ng-model="range" id="range" >10 &nbsp;&nbsp;
+                    <div style="word-break: break-all;word-wrap: break-word;font-size: 16px;">当前：<span ng-bind="range">{{range}}</span></div>
+            </div>
+
+            <button id="page13-button2"  style="border-radius:7px 7px 7px 7px;width: 90%;margin-left: auto;margin-right: auto;margin-top: 10%"  class="button button-positive  button-block" on-tap="saveWindowScreen(range,check);">保存</button>
+        </div>
+    </ion-content>
+</ion-view>

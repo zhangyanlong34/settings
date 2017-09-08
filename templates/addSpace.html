@@ -1,0 +1,50 @@
+<ion-view title="添加空间" id="addSpace">
+    <ion-content padding="true" class="has-header">
+        <form id="addSpace-form4" class="list" novalidate>
+            <label class="item item-input" id="addSpace-input1">
+                <input type="text" id="spaceName" placeholder="请输入的空间名字"  required>
+            </label>
+            <ion-item class="item-icon-right" id="page9-list-item30" ng-click="modalIcon.show()">空间图标：
+                <i class="icon"><img src="lib/ionic/img/space/{{pic}}.png" onerror="this.src='lib/ionic/img/space/home.png'" style="height: 25px;height: 25px;"></i>
+            </ion-item>
+        </form>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+            <button id="addSpace-button8" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="save()">保存空间信息</button>
+        </div>
+    </ion-content>
+</ion-view>
+
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">选择你的空间</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <ion-list>
+                <ion-radio ng-repeat="spatialsName in spatialsNameList"
+                           ng-value="spatialsName._label"
+                           ng-click="serverSideChange(spatialsName)"
+                           name="server-side">
+                    {{ spatialsName._label }}
+                </ion-radio>
+            </ion-list>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="templates/modalIcon.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modalIcon.hide()">取消</button>
+            <h1 class="title">选择你的图标</h1>
+            <button class="button button-clear button-primary" ng-click="modalIcon.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="item my-image-item"
+                 collection-repeat="item in picItems track by $index" id="pic{{$index}}">
+                <img ng-src="lib/ionic/img/space/{{item}}.png"  ng-click="chosePic(this,$index);" style="height: 100%;width: 100%;"/>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>

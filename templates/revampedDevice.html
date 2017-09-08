@@ -1,0 +1,99 @@
+<ion-view title={{tittle}} id="page9" cache-view="false">
+    <ion-content padding="true" class="has-header" ng-init="getTypename();">
+        <div>
+            <p>
+                基本属性
+            </p>
+        </div>
+        <ion-list id="page9-list9">
+            <ion-item id="page26-list-item23">内部ID：
+                <span class="item-note">{{device._name}}</span>
+            </ion-item>
+            <ion-item id="page9-list-item24">设备ID：
+                <span class="item-note" ng-bind="device._equipmentid" ></span>
+            </ion-item>
+            <ion-item id="page9-list-item25">设备名称：                
+		          <input type="text" ng-model="device._label" class="item-note" style="padding: 0;height: auto;text-align: right;">
+            </ion-item>
+            <ion-item class="item-icon-right" id="page9-list-item26" ng-click="modal.show()">空间名称：
+            	<div class="item-note" style="width: 3rem;margin-right: -10px;">
+            		<span class="item-note" ng-click="modal.show()" id="page9-list-item31" ng-bind="space._label"></span>
+            	</div>
+              	
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <!--<label class="item item-select" id="page-select1" ng-if="device._typename=='3'" >
+                <span class="input-label">布防类型</span>
+                <select id="select" ng-model="device._securityname">
+                    <option value="1">常设布防</option>
+                    <option value="2">周界布防</option>
+                    <option value="3">家庭布防</option>
+                    <option value="4">禁用设备</option>
+                </select>
+            </label>-->
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    设备类型
+                </div>
+                <select id="typenameSelect">
+                    <option ng-model="typenameSelect"  ng-repeat="x in typename" value="{{x.value}}">{{x.text}}</option>
+                </select>
+            </div>
+            <ion-item class="item-icon-right" id="page9-list-item30" ng-click="modalIcon.show()">设备图标：
+                <i class="icon"><img src="lib/ionic/img/device/{{pic}}.png" style="height: 25px;" onerror="this.src='lib/ionic/img/device/dianqi.png'"></i>
+            </ion-item>
+        </ion-list>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+        	<button id="page9-button6" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" ng-click="equipmentSave(device)">保存</button>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+<script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+          <h1 class="title">选择你的空间</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+         <ion-list>
+			<ion-radio ng-repeat="spatialsName in spatialsNameList"
+		       ng-value="spatialsName._label"
+		       ng-click="serverSideChange(spatialsName)"
+		       name="server-side">
+	          {{ spatialsName._label }}
+	       </ion-radio>
+		  </ion-list>
+        </ion-content>
+      </ion-modal-view>
+</script>
+
+<script id="templates/modalIcon.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modalIcon.hide()">取消</button>
+			<h1 class="title">选择你的图标</h1>
+			<button class="button button-clear button-primary"  ng-click="modalIcon.hide()">确定</button>
+		</ion-header-bar>
+
+            <ion-content>
+                <div class="item my-image-item"
+                     collection-repeat="item in picItems track by $index" id="pic{{$index}}">
+                    <img ng-src="lib/ionic/img/device/{{item}}.png" ng-click="chosePic(this,$index);" style="height: 100%;width: 100%;"/>
+                </div>
+            </ion-content>
+            <!--<div ng-repeat="item in picItems track by $index" class="row row-wrap">
+                {{$index}}
+                <div ng-show="$index%4==0" style="flex-flow:row wrap;">
+
+                </div>
+            </div>-->
+            <!--<table border="1" ng-repeat="item in picItems track by $index">
+                <tr ></tr>
+                    <th><img src="{{item}}" class="img-responsive" ng-click="chosePic(this);"/></th>
+            </table>-->
+
+	</ion-modal-view>
+</script>

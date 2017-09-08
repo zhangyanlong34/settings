@@ -1,0 +1,25 @@
+<ion-view title="空调" id="page24">
+    <ion-content padding="true" class="has-header" ng-init="initCondition();">
+        <ion-radio ng-model="power" name="power" ng-value="1" ng-click="change(this,'power')">
+        开机
+        </ion-radio>
+        <ion-radio ng-model="power" name="power" ng-value="0" ng-click="change(this,'power')">
+            关机
+        </ion-radio>
+        <ion-radio ng-model="temper" name="temper" ng-value="0" ng-click="change(this,'temper')">
+            制冷
+        </ion-radio>
+        <ion-radio ng-model="temper" name="temper" ng-value="1" ng-click="change(this,'temper')">
+            制热
+        </ion-radio>
+        <div id="page24-container5" style="height: 15%;margin-top: 20px;">
+            <div style="text-align:center;">
+                <td><button id="page24-button08" class="button button-positive" name="button" style="width: 15%">18</button></td>
+                <td><button id="page24-button33" class="button button-positive" name="button" style="width: 15%">22</button></td>
+                <td><button id="page24-button35" class="button button-positive" name="button" style="width: 15%">24</button></td>
+                <td><button id="page24-button36" class="button button-positive" name="button" style="width: 15%">26</button></td>
+                <td><button id="page24-button40" class="button button-positive" name="button" style="width: 15%">30</button></td>
+            </div>
+        <button id="page25-button41" class="button button-positive  button-block" style="border-radius:7px 7px 7px 7px;width: 90%;margin-left: auto;margin-right: auto;margin-top: 10%" on-tap="update()">确定</button>
+    </ion-content>
+</ion-view>

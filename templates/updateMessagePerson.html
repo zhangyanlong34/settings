@@ -1,0 +1,22 @@
+<ion-view title="添加短信通知电话" id="page15">
+    <ion-content padding="true" class="has-header" ng-init="init();">
+        <form id="page15-form5" class="list" name="myForm" novalidate>
+            <label class="item item-input" id="page15-input2" name="phone">
+                <input type="tel" placeholder="请输入短信通知电话" ng-model="phone" readonly="readonly"/>
+            </label>
+            <label class="item item-input" id="page15-input3" name="name">
+                <input type="text" placeholder="请输入短信通知电话联系人" ng-model="username" name="username" required>
+            </label>
+            <label>
+                <span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+                        <span>联系人不能为空</span>
+                </span>
+            </label>
+            <ion-toggle toggle-class="toggle-positive"  id="page15-toggle5" ng-model='isSend'>安防报警是否短信通知</ion-toggle>
+        </form>
+        <div class="spacer" style="width: 300px; height: 115px;"></div>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+        <button id="page15-button10" ng-disabled="myForm.username.$dirty && myForm.username.$invalid" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block"  on-tap="save({phone:phone,username:username,isSend:isSend},'1')">保存</button>
+            </div>
+    </ion-content>
+</ion-view>

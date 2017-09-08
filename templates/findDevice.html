@@ -1,0 +1,14 @@
+<ion-view title="智能设备添加" id="page17" cache-view="false">
+	 <ion-nav-buttons side="right">
+	    <button class="button" ng-click="findDevices()" style="font-size: 17px;">
+	      	  查找
+	    </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header" ng-init="clearDevice();">
+        <ion-list id="page17-list23">
+           <ion-item class="item-icon-left" ng-repeat="newdevice in newDevicesList"  ng-click="goToDevice(newdevice,newdevice._label);">
+                {{newdevice._label}}                
+           </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

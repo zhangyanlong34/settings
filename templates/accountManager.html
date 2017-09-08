@@ -1,0 +1,24 @@
+<ion-view title="账号管理" id="page5">
+    <ion-nav-buttons side="right">
+        <button class="button header-item" style="width: 5rem; color:white; font-size:16px;font-family : 微软雅黑;"  ng-click="editUser()" >编辑 </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <ion-list id="page5-list8" ng-show="isShowEdit">
+            <ion-item class="item item-icon-left" id="page5-list-item10" ng-repeat =" item in  userlist" style =" height:3.5rem">
+                <i class="icon"><img src="lib/ionic/img/account/account.png" style="height: 20px;"></i>
+               <ion-checkbox  ng-model="item.checked" checked="item.checked" style="margin: 0px;  padding-top:0px; padding-bottom: 0px ; border: 0"  >{{item.username}}</ion-checkbox>
+             </ion-item>
+        </ion-list>
+
+        <ion-list id="page5-list9" ng-hide="isShowEdit" >
+            <ion-item class="item-icon-left" id="page5-list-item11" on-hold="deleteAccount()" ng-repeat =" item in userlist">
+                <i class="icon"><img src="lib/ionic/img/account/account.png" style="height: 25px;height: 25px;"></i>
+               <span  ng-bind ="item.username"></span>
+            </ion-item>
+        </ion-list>
+
+        <div style="width: 90%;margin-left: auto;margin-right: auto;"  ng-show="isShowEdit">
+        <button id="page5-button1" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block"  ng-click="deleteUsers();">删除帐号</button>
+        </div>
+    </ion-content>
+</ion-view>

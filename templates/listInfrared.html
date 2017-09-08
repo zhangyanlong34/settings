@@ -1,0 +1,12 @@
+<ion-view title="自定义遥控设备" id="page22">
+    <ion-content padding="true" class="has-header"  ng-init="init()">
+        <ion-list id="page22-list27" ng-repeat="item in items track by $index">
+            <ion-item class="item-icon-right" id="page22-list-item71" ng-click="goDetail(item);">红外设备
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" id="page22-list-item78" ui-sref="menu.listCenterAir">中央空调
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,9 @@
+<ion-view title="设备列表" id="page23" cache-view="false">
+    <ion-content padding="true" class="has-header" ng-init="initDevice();">
+        <ion-list id="page23-list28">
+            <ion-item class="item-icon-left" ng-repeat="item in items" on-tap="gotimeAddDevice(item);">
+                {{item._label}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

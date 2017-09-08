@@ -1,0 +1,18 @@
+<ion-view title="安防设备添加" id="page18">
+    <ion-content padding="true" class="has-header" ng-init="getDevice();">
+        <ion-list id="page18-list25" ng-repeat="item in items track by $index" >
+            <ion-item class="item-icon-left" id="page18-list-item60" ng-click="goToDevice(item)">
+                <i class="icon"><img src="lib/ionic/img/device/{{item._customicon}}.png" style="height: 25px;height: 25px;" onerror="this.src='lib/ionic/img/device/dianqi.png'"></i>{{item._label}}
+            </ion-item>
+            <!--<ion-item class="item-icon-left" id="page18-list-item61" ui-sref="menu.page19" ng-click="goToDevice('窗磁');">
+                <i class="icon ion-social-windows-outline"></i>窗磁
+            </ion-item>
+            <ion-item class="item-icon-left" id="page18-list-item62" ui-sref="menu.page19" ng-click="goToDevice('水浸探测器');">
+                <i class="icon ion-waterdrop"></i>水浸探测器
+            </ion-item>
+            <ion-item class="item-icon-left" id="page18-list-item63" ui-sref="menu.page19" ng-click="goToDevice('幕帘探测器');">
+                <i class="icon ion-ios-box-outline"></i>幕帘探测器
+            </ion-item>-->
+        </ion-list>
+    </ion-content>
+</ion-view>

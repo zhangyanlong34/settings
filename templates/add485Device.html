@@ -1,0 +1,83 @@
+<ion-view  id="page26" title ="设备添加">
+	
+    <ion-content padding="true" class="has-header">
+        <div>
+            <p>
+            	    基本属性
+            </p>
+        </div>
+        <ion-list id="page26-list9">
+            <ion-item id="page26-list-item24">内部ID：
+                <span class="item-note">{{newdevice._name}}</span>
+            </ion-item>
+            <ion-item id="page26-list-item25">设备名称：
+                <input type="text" ng-model="newdevice._label" class="item-note" style="padding: 0;height: auto;text-align: right;">
+            </ion-item>
+            <ion-item id="page26-list-item26" ng-if="newdevice._name != null">设备地址：
+                <span class="item-note">{{newdevice._address}}</span>
+            </ion-item>
+            <ion-item id="page26-list-item29" ng-if="newdevice._name == null">设备地址：
+                <input type="text" ng-model="newdevice._address" class="item-note" style="padding: 0;height: auto;text-align: right;">
+            </ion-item>
+            <ion-item class="item-icon-right" id="page26-list-item27" ng-click="modal.show()">空间名称：
+            	<div class="item-note" style="width: 3rem;margin-right: -10px;">
+            		 <span class="item-note"  ng-click="modal.show()" ng-bind ="space._label"></span>
+            	</div>
+               
+                <i class="icon ion-android-arrow-dropright"></i>
+            </ion-item>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    设备类型
+                </div>
+                <select id="typenameSelect">
+                    <option ng-model="typenameSelect"  ng-repeat="x in typenames" value="{{x.value}}">{{x.text}}</option>
+                </select>
+            </div>
+            <ion-item class="item-icon-right" id="page9-list-item30" ng-click="modalIcon.show()">设备图标：
+                <i class="icon"><img src="lib/ionic/img/device/{{pic}}.png" onerror="this.src='lib/ionic/img/device/dianqi.png'" style="height: 25px;"></i>
+            </ion-item>
+        </ion-list>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+        	<button id="page26-button6" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" ng-click="equipmentSave(newdevice)">保存</button>
+        </div>
+    </ion-content>
+</ion-view>
+
+<!--选择空间弹层-->
+<script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+          <h1 class="title">选择你的空间</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+         <ion-list>
+			<ion-radio ng-repeat="spatialsName in spatialsNameList"
+		       ng-value="spatialsName._label"
+		       ng-click="serverSideChange(spatialsName)"
+		       name="server-side">
+	          {{ spatialsName._label }}
+	       </ion-radio>
+		  </ion-list>
+        </ion-content>
+      </ion-modal-view>
+</script>
+<!--选择图标弹层-->
+<script id="templates/modalIcon.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary" ng-click="modalIcon.hide()">取消</button>
+			<h1 class="title">选择你的图标</h1>
+			<button class="button button-clear button-primary" ng-click="modalIcon.hide()">确定</button>
+		</ion-header-bar>
+        <ion-content>
+            <div class="item my-image-item"
+                 collection-repeat="item in picItems track by $index"  id="pic{{$index}}">
+                <img ng-src="lib/ionic/img/device/{{item}}.png" ng-click="chosePic(this,$index);" style="height: 100%;width: 100%;"/>
+            </div>
+        </ion-content>
+	</ion-modal-view>
+</script>
+

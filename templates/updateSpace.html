@@ -1,0 +1,31 @@
+<ion-view title="{{label}}" id="page12">
+    <ion-content padding="true" class="has-header">
+        <form id="page12-form4" class="list" name="myForm" novalidate>
+            <label class="item item-input" id="page12-input1">
+                <input type="text" id="name" name="name" ng-model="label" placeholder="请输入修改的空间名字" value="{{label}}" required>
+            </label>
+            <ion-item class="item-icon-right" id="page9-list-item30" ng-click="modalIcon.show()">空间图标：
+                <i class="icon"><img src="lib/ionic/img/space/{{pic}}.png" style="height: 25px;height: 25px;" onerror="this.src='lib/ionic/img/space/defult.png'"></i>
+            </ion-item>
+        </form>
+        <div style="width: 90%;margin-left: auto;margin-right: auto;font-family : 微软雅黑,宋体;">
+          <button id="page12-button8" ng-disabled="myForm.label.$dirty && myForm.label.$invalid" style="border-radius:7px 7px 7px 7px;font-family : 微软雅黑;" class="button button-positive  button-block" on-tap="update()">保存空间信息</button>
+        </div>
+
+    </ion-content>
+</ion-view>
+<script id="templates/modalIcon.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary"  style="font-family : 微软雅黑;" ng-click="modalIcon.hide()">取消</button>
+            <h1 class="title" style="font-family : 微软雅黑;">选择你的图标</h1>
+            <button class="button button-clear button-primary" style="font-family : 微软雅黑;" ng-click="modalIcon.hide()">确定</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="item my-image-item"
+                 collection-repeat="item in picItems track by $index" id="pic{{$index}}">
+                <img ng-src="lib/ionic/img/space/{{item}}.png" ng-click="chosePic(this,$index);" style="height: 100%;width: 100%;"/>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>

@@ -1,0 +1,41 @@
+<ion-view title="{{security._label}}" id="page2" cache-view="false" ng-init="timeAddSaftyInit();">
+  <ion-content padding="true" class="has-header" >
+    <h4 id="page2-heading1" style="color:#000000;">定时信息：</h4>
+    <form id="page2-form2" class="list">
+      <ion-toggle toggle-class="toggle-positive" id="page2-toggle2"  name="checked" ng-model="checked">启用设备预约</ion-toggle>
+      <ion-item class="item-icon-right" id="page2-list-item2"  ng-click="modal.show()">重复
+        <div class="item-note" style="width: 3rem;margin-right: -10px;">
+          <span class="item-note" ng-model="repeatDays">{{repeatDays}}</span>
+        </div>
+        <i class="icon ion-android-arrow-dropright"></i>
+      </ion-item>
+      <div ng-repeat="time in times track by $index">
+        <div class="item item-note item-icon-right" on-hold="deleteTime($index);" ion-datetime-picker time    ng-model="time" style="float: none" >
+          时间信息<strong id="Time{{$index}}" style="float: right">{{time| date: "H:mm"}}</strong>
+          <i class="icon ion-android-arrow-dropright"></i>
+        </div>
+      </div>
+      <button id="page25-button40" class="button button-positive  button-block" ng-click="addOneTime()">添加时间</button>
+      <button id="page25-button41" class="button button-positive  button-block" ng-click="saveTimeSafty()">确定</button>
+    </form>
+
+  </ion-content>
+</ion-view>
+
+
+<!--选择空间弹层-->
+<script id="templates/modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <button class="button button-clear button-primary" ng-click="modal.hide()">取消</button>
+      <h1 class="title">选择重复日期</h1>
+      <button class="button button-clear button-primary" ng-click="modal.hide()">确定</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <ion-toggle ng-repeat="item in settingsList"
+                  ng-model="item.checked" ng-checked="item.checked" ng-click="changeTime();">
+        {{ item.text }}
+      </ion-toggle>
+    </ion-content>
+  </ion-modal-view>
+</script>
